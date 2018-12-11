@@ -7,7 +7,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 group = 'com.filestack'
-version = '5.3.0'
+version = '5.3.7'
 project.archivesBaseName = 'fieldwire-filestack-android'
 
 android {
@@ -100,10 +100,10 @@ bintray {
         licenses = ['Apache-2.0']
 
         websiteUrl = 'https://filestack.com'
-        vcsUrl = 'https://github.com/Premhalani/fieldwire_filestack_android.git'
-        issueTrackerUrl = 'https://github.com/Premhalani/fieldwire_filestack_android/issues'
+        vcsUrl = 'https://github.com/filestack/filestack-android.git'
+        issueTrackerUrl = 'https://github.com/filestack/filestack-android/issues'
 
-        githubRepo = 'fieldwire_filestack_android'
+        githubRepo = 'filestack/filestack-android'
         githubReleaseNotesFile = 'CHANGELOG.md'
 
         version {

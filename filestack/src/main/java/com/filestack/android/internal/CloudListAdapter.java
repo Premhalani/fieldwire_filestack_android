@@ -155,31 +155,34 @@ class CloudListAdapter extends RecyclerView.Adapter<CloudListViewHolder> impleme
         ArrayList<CloudItem> items = folders.get(currentPath);
         CloudItem[] newItems = cloudContents.getItems();
 
-        int oldSize = items.size();
-        for (CloudItem item : newItems) {
-            if (!items.contains(item)) {
-                items.add(item);
+        // To avoid NullPointerException when user quickly switches between the sources
+        if(items != null && newItems != null) {
+            int oldSize = items.size();
+            for (CloudItem item : newItems) {
+                if (!items.contains(item)) {
+                    items.add(item);
+                }
             }
-        }
-        int newSize = items.size();
+            int newSize = items.size();
 
-        String nextToken = cloudContents.getNextToken();
-        nextTokens.put(currentPath, nextToken);
-        if (oldSize == 0) {
-            // The new path may have fewer items than the old path
-            // If we don't clear all item views, we could end up displaying items from the old path
-            notifyDataSetChanged();
-        } else {
-            notifyItemRangeInserted(oldSize, newSize - oldSize);
-        }
+            String nextToken = cloudContents.getNextToken();
+            nextTokens.put(currentPath, nextToken);
+            if (oldSize == 0) {
+                // The new path may have fewer items than the old path
+                // If we don't clear all item views, we could end up displaying items from the old path
+                notifyDataSetChanged();
+            } else {
+                notifyItemRangeInserted(oldSize, newSize - oldSize);
+            }
 
-        // This is a temporary fix for the weird Google Drive behavior
-        // We get a page with just the Trash folder, which is also a duplicate
-        // TODO Change this when backend is fixed
-        if (newSize == oldSize && nextToken != null) {
-            loadMoreData();
-        } else {
-            isLoading = false;
+            // This is a temporary fix for the weird Google Drive behavior
+            // We get a page with just the Trash folder, which is also a duplicate
+            // TODO Change this when backend is fixed
+            if (newSize == oldSize && nextToken != null) {
+                loadMoreData();
+            } else {
+                isLoading = false;
+            }
         }
     }
 

@@ -324,7 +324,6 @@ public class FsActivity extends AppCompatActivity implements
     @Override
     public void onEmptyChanged(boolean isEmpty) {
         invalidateOptionsMenu();
-        populateLocalViewWithFilesSelected();
     }
 
     @Override
@@ -344,12 +343,6 @@ public class FsActivity extends AppCompatActivity implements
             shouldCheckAuth = false;
             CloudListFragment fragment = CloudListFragment.create(selectedSource, allowMultipleFiles, theme);
             showFragment(fragment);
-        }
-    }
-
-    private void populateLocalViewWithFilesSelected() {
-        if(selectedSource.equals(Sources.DEVICE) && !Util.getSelectionSaver().isEmpty()) {
-
         }
     }
 

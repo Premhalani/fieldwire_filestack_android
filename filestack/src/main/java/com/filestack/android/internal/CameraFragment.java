@@ -111,7 +111,7 @@ public class CameraFragment extends Fragment implements BackButtonListener, View
             String name = prefs.getString(PREF_NAME, null);
             String mimeType = name.contains("jpg") ? "image/jpeg" : "video/mp4";
             Util.addMediaToGallery(context, path);
-            Selection selection = new Selection(Sources.CAMERA, path, mimeType, name);
+            Selection selection = new Selection(Sources.CAMERA, path, 0, mimeType, name);
             Util.getSelectionSaver().toggleItem(selection);
         }
     }

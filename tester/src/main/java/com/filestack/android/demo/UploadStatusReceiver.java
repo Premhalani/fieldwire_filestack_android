@@ -32,6 +32,7 @@ public class UploadStatusReceiver extends BroadcastReceiver {
         logView.append("========================\n");
         logView.append(status.toUpperCase() + "\n");
         logView.append(name + "\n");
+        logView.append((selection.getSize()/1024/1024) + "Mb \n");
         logView.append("https://cdn.filestackcontent.com/" + handle + "\n");
         logView.append("========================\n");
     }

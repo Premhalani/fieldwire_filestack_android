@@ -9,7 +9,7 @@ import com.filestack.android.Selection;
 class SelectionFactory {
 
     public static Selection from(String sourceId, CloudItem cloudItem) {
-        return new Selection(sourceId, cloudItem.getPath(), cloudItem.getMimetype(),
+        return new Selection(sourceId, cloudItem.getPath(), (int) cloudItem.getSize(), cloudItem.getMimetype(),
                 cloudItem.getName());
     }
 

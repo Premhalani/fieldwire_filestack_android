@@ -72,5 +72,5 @@ class MultiSelectorTest {
 }
 
 private fun selection(id: String): Selection {
-    return Selection("provider", "path", "mimeType", id)
+    return Selection("provider", "path", 1024, "mimeType", id)
 }

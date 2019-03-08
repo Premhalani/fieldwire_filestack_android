@@ -21,9 +21,10 @@ public class Selection implements Parcelable {
      *     Access to this class is scheduled to be removed in future versions.
      * */
     @Deprecated
-    public Selection(String provider, String path, String mimeType, String name) {
+    public Selection(String provider, String path, int size, String mimeType, String name) {
         this.provider = provider;
         this.path = path;
+        this.size = size;
         this.mimeType = mimeType;
         this.name = name;
     }

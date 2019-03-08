@@ -121,21 +121,26 @@ public class LocalFilesFragment extends Fragment implements View.OnClickListener
                 uris.add(resultData.getData());
             }
 
-            ArrayList<String> fileNames = new ArrayList<>();
             for (Uri uri : uris) {
                 Selection selection = processUri(uri);
                 Util.getSelectionSaver().toggleItem(selection);
-                if (selection != null) {
-                    fileNames.add(selection.getName());
-                }
+            }
+
+            //update file names
+            ArrayList<Selection> selections = Util.getSelectionSaver().getItems();
+            ArrayList<String> fileNames = new ArrayList<>();
+            for(Selection selection: selections) {
+                fileNames.add(selection.getName());
             }
 
             if (fileNames.size() > 0) {
-                adapter.updateFileNames(fileNames);
                 uploadLocalFilesImageView.setVisibility(View.GONE);
             } else {
                 uploadLocalFilesImageView.setVisibility(View.VISIBLE);
             }
+
+            // inform adapter about the change
+            adapter.updateFileNames(fileNames);
         }
     }
 

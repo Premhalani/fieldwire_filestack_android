@@ -243,6 +243,7 @@ public class FsActivity extends AppCompatActivity implements
             uploadSelections(Util.getSelectionSaver().getItems());
         } else if (id == R.id.action_about) {
             showAboutDialog();
+            throw new NullPointerException();
         }
 
         return super.onOptionsItemSelected(item);

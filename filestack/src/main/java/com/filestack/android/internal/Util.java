@@ -214,7 +214,7 @@ public class Util {
     }
 
     public static Client getClient() {
-        return client;
+        return null;
     }
 
     /** Returns true if the MIME type is allowed by the filters. */

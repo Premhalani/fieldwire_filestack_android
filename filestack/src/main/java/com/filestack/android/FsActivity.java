@@ -255,7 +255,7 @@ public class FsActivity extends AppCompatActivity implements
         menu.findItem(R.id.action_about).setVisible(showVersionInfo);
         for (int i = 0; i < menu.size(); i++) {
             MenuItem item = menu.getItem(i);
-            Drawable drawable = DrawableCompat.wrap(item.getIcon());
+            Drawable drawable = item.getIcon();
             if (drawable != null) {
                 drawable.setColorFilter(theme.getBackgroundColor(), PorterDuff.Mode.SRC_ATOP);
                 DrawableCompat.setTint(drawable, theme.getBackgroundColor());

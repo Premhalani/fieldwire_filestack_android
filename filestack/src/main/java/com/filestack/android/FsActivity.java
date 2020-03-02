@@ -164,11 +164,11 @@ public class FsActivity extends AppCompatActivity implements
         }
         nav.setItemIconTintList(ColorStateList.valueOf(theme.getAccentColor()));
 
-        if (savedInstanceState == null) {
-            Config config = (Config) intent.getSerializableExtra(FsConstants.EXTRA_CONFIG);
-            String sessionToken = preferences.getString(PREF_SESSION_TOKEN, null);
-            Util.initializeClient(config, sessionToken);
+        Config config = (Config) intent.getSerializableExtra(FsConstants.EXTRA_CONFIG);
+        String sessionToken = preferences.getString(PREF_SESSION_TOKEN, null);
+        Util.initializeClientIfNeeded(config, sessionToken);
 
+        if (savedInstanceState == null) {
             Util.getSelectionSaver().clear();
 
             selectedSource = sources.get(0);

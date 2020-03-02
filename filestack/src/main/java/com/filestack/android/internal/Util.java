@@ -203,14 +203,16 @@ public class Util {
     }
 
     /** Create the Java SDK client and set a session token. The token maintains cloud auth state. */
-    public static void initializeClient(Config config, String sessionToken) {
-        // Override returnUrl until introduction of FilestackUi class which will allow to set this
-        // all up manually.
-        Config overridenConfig = new Config(config.getApiKey(), "filestack://done",
-                config.getPolicy(), config.getSignature());
+    public static void initializeClientIfNeeded(Config config, String sessionToken) {
+        if (client == null) {
+            // Override returnUrl until introduction of FilestackUi class which will allow to set this
+            // all up manually.
+            Config overridenConfig = new Config(config.getApiKey(), "filestack://done",
+                    config.getPolicy(), config.getSignature());
 
-        client = new Client(overridenConfig);
-        client.setSessionToken(sessionToken);
+            client = new Client(overridenConfig);
+            client.setSessionToken(sessionToken);
+        }
     }
 
     public static Client getClient() {

@@ -1,5 +1,10 @@
 Change Log
 ==========
+Version 5.4.1 *(2020-03-05)*
+----------------------------
+
+ * [Change] Defend against `NullPointerException` in `Util::getClient()`
+
 Version 5.3.0 *(2018-11-29)*
 ----------------------------
 
